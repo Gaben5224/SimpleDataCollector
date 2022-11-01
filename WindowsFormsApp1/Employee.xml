@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Employees>
+  <Employee>
+    <Id>1</Id>
+    <Name>Kiss Pista Jóska</Name>
+    <Job>Huzalozó</Job>
+  </Employee>
+  <Employee>
+    <Id>2</Id>
+    <Name>Kiss Pista András</Name>
+    <Job>Huzalozó</Job>
+  </Employee>
+</Employees>
