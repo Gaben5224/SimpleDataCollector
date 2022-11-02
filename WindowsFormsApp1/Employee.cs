@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 
@@ -16,17 +17,32 @@ namespace DataCollector
         public Employee()
         {
             if (!File.Exists(XmlFilePath))
-                File.AppendAllText(XmlFilePath, "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\r\n<Employees>\r\n</Employees>\r\n");
+            {
+                File.Create(XmlFilePath).Close();
+                
+
+                xmlDocument.LoadXml("<Employees>" +
+                                    "</Employees>");
+                XmlDeclaration xmlDeclaration;
+                xmlDeclaration = xmlDocument.CreateXmlDeclaration("1.0", "UTF-8", "no");
+                XmlElement employeesElement = xmlDocument.DocumentElement;
+                xmlDocument.InsertBefore(xmlDeclaration, employeesElement);
+                xmlDocument.Save(XmlFilePath);
+            }
         }
 
         public void AddEmployee(int id, string jobPosition, string name)
         {
             xmlDocument.Load(XmlFilePath);
+            int childCount = xmlDocument.ChildNodes.Count;
+            var lastChildAttribute = xmlDocument.ChildNodes.Item(childCount - 1).LastChild.Attributes;
+            var lastNodeId = Convert.ToInt32(lastChildAttribute.Item(0).Value);
+
 
             XmlElement employeeElement = xmlDocument.CreateElement("Employee");
             xmlDocument.DocumentElement.AppendChild(employeeElement);
-            XmlAttribute attribute = xmlDocument.CreateAttribute("EmployeeId");
-            attribute.Value = id.ToString();
+            XmlAttribute attribute = xmlDocument.CreateAttribute("NodeId");
+            attribute.Value = (lastNodeId + 1).ToString();
             employeeElement.Attributes.Append(attribute);
 
             XmlElement idElement = xmlDocument.CreateElement("Id");
@@ -56,6 +72,21 @@ namespace DataCollector
             }
 
             return this._employeesName;
+        }
+
+        public void EditEmployee(int employeeId, string newName, int newId, string newJobTitle)
+        {
+            xmlDocument.Load(XmlFilePath);
+
+            XmlNode targetEmployeeName = xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Name", employeeId));
+            targetEmployeeName.InnerText = newName;
+            XmlNode targetEmployeeId = xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Id", employeeId));
+            targetEmployeeId.InnerText = newId.ToString();
+            XmlNode targetJobTitle = xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Job", employeeId));
+            targetJobTitle.InnerText = newJobTitle;
+
+            xmlDocument.Save(XmlFilePath);
+
         }
     }
 }

@@ -245,7 +245,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::DataCollector.Properties.Resources.ect_hu1;
+            this.pictureBox1.Image = global::DataCollector.Properties.Resources.ect_hu;
             this.pictureBox1.Location = new System.Drawing.Point(373, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(50, 36);
@@ -278,7 +278,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ECT adatgyűjtő";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
