@@ -63,9 +63,9 @@ namespace DataCollector.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon data_collection__2_ {
+        internal static System.Drawing.Icon DataCollectIco {
             get {
-                object obj = ResourceManager.GetObject("data_collection__2_", resourceCulture);
+                object obj = ResourceManager.GetObject("DataCollectIco", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace DataCollector.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ect_hu1 {
+        internal static System.Drawing.Bitmap ect_hu {
             get {
-                object obj = ResourceManager.GetObject("ect-hu1", resourceCulture);
+                object obj = ResourceManager.GetObject("ect_hu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
