@@ -96,7 +96,15 @@ namespace DataCollector
 
             XmlNode targetNode = this._xmlDocument.SelectSingleNode(String.Format("Employees/Employee[@NodeId='{0}']", nodeId.ToString()));
 
-            targetNode.ParentNode.RemoveChild(targetNode);
+            try
+            {
+                targetNode.ParentNode.RemoveChild(targetNode);
+            }
+            catch (Exception)
+            {
+
+                //
+            }
 
             this._xmlDocument.Save(_xmlFilePath);
         }
