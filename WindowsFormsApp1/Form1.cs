@@ -7,6 +7,7 @@ namespace DataCollector
     public partial class Form1 : Form
     {
         private Employee _employee = new Employee();
+        private bool _isLoggedIn = Properties.Settings.Default.userIsLogged;
         public Form1()
         {
             InitializeComponent();
@@ -41,6 +42,24 @@ namespace DataCollector
 
         }
 
+        private void LoginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var Loginform = new Login();
+            Loginform.ShowDialog();
+
+            this.label10.Text = Properties.Settings.Default.userIsLogged.ToString();
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            this.SetMenuStripItems();
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void SetValues()
         {
             var employeeNames = this._employee.GetAllEmployeesName();
@@ -60,6 +79,22 @@ namespace DataCollector
             this.textBox4.ResetText();
             this.maskedTextBox1.ResetText();
             this.maskedTextBox2.ResetText();
+        }
+
+        private void SetMenuStripItems()
+        {
+            if (Properties.Settings.Default.userIsLogged)
+            {
+                this.LoginToolStripMenuItem.Enabled = false;
+                this.EmployeeToolStripMenuItem.Enabled = true;
+                this.JobToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                this.LoginToolStripMenuItem.Enabled = true;
+                this.EmployeeToolStripMenuItem.Enabled = false;
+                this.JobToolStripMenuItem.Enabled = false;
+            }
         }
     }
 }

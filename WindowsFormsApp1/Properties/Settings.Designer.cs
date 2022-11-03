@@ -22,5 +22,17 @@ namespace DataCollector.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool userIsLogged {
+            get {
+                return ((bool)(this["userIsLogged"]));
+            }
+            set {
+                this["userIsLogged"] = value;
+            }
+        }
     }
 }

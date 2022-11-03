@@ -17,7 +17,7 @@ namespace DataCollector
             InitializeComponent();
 
             var employee = new Employee();
-            employee.AddEmployee(203, "FPV nagymester", "Czerné Gecse Anita");
+            employee.DeleteEmployee(2032);
         }
     }
 }
