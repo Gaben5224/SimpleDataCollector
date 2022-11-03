@@ -41,6 +41,7 @@ namespace DataCollector
 
             XmlElement employeeElement = this._xmlDocument.CreateElement("Employee");
             this._xmlDocument.DocumentElement.AppendChild(employeeElement);
+
             XmlAttribute attribute = this._xmlDocument.CreateAttribute("NodeId");
             attribute.Value = (lastNodeId + 1).ToString();
             employeeElement.Attributes.Append(attribute);
@@ -87,6 +88,17 @@ namespace DataCollector
 
             this._xmlDocument.Save(_xmlFilePath);
 
+        }
+
+        public void DeleteEmployee(int nodeId)
+        {
+            this._xmlDocument.Load(this._xmlFilePath);
+
+            XmlNode targetNode = this._xmlDocument.SelectSingleNode(String.Format("Employees/Employee[@NodeId='{0}']", nodeId.ToString()));
+
+            targetNode.ParentNode.RemoveChild(targetNode);
+
+            this._xmlDocument.Save(_xmlFilePath);
         }
     }
 }
