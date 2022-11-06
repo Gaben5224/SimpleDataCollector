@@ -11,5 +11,5 @@ The aim of this project:
 - Getting to know Ms-Sql
 
 What does this application do?
-It was designed to collect data on workflows whose performance can be measured because there are defined standards.
-The data is collected in a .csv file so that reports can be easily generated in Excel. 
+It was designed to collect data on workflows which performance can be measured with defined standards.
+The data is collected in a .csv file so the reports can be easily generated in Excel. 
