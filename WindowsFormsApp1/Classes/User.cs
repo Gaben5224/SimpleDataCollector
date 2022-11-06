@@ -8,16 +8,11 @@ namespace DataCollector
 {
     internal class User
     {
-        private bool _isLogged;
         public List<string> Exceptions = new List<string>();
 
         public bool IsUserLogged 
         { 
-            get { return _isLogged; }
-            private set
-            {
-                _isLogged = Properties.Settings.Default.userIsLogged;
-            }
+            get { return Properties.Settings.Default.userIsLogged; }
         }
 
         public void Login(string password)
