@@ -1,6 +1,6 @@
 ﻿namespace DataCollector
 {
-    partial class Login
+    partial class LoginFormForm
     {
         /// <summary>
         /// Required designer variable.
@@ -67,7 +67,7 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Login
+            // LoginForm
             // 
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -79,10 +79,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Login";
+            this.Name = "LoginForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
+            this.Text = "LoginForm";
             this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();

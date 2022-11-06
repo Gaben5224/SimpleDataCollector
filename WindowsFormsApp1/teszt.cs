@@ -17,7 +17,7 @@ namespace DataCollector
             InitializeComponent();
 
             var employee = new Employee();
-            employee.DeleteEmployee(2032);
+            employee.GetAllEmployeesData();
         }
     }
 }

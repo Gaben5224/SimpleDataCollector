@@ -73,16 +73,6 @@ namespace DataCollector.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ect_hu {
-            get {
-                object obj = ResourceManager.GetObject("ect_hu", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap EmployeeIcon {
             get {
                 object obj = ResourceManager.GetObject("EmployeeIcon", resourceCulture);
@@ -106,6 +96,26 @@ namespace DataCollector.Properties {
         internal static System.Drawing.Bitmap PasswordIcon {
             get {
                 object obj = ResourceManager.GetObject("PasswordIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PencilIcon {
+            get {
+                object obj = ResourceManager.GetObject("PencilIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RemoveIcon {
+            get {
+                object obj = ResourceManager.GetObject("RemoveIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
