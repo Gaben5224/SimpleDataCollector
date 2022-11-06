@@ -21,17 +21,15 @@ namespace DataCollector
             InitializeComponent();
             SetStyleDataGridView1();
             this.FillEmployeeList();
-
-
         }
 
         private void FillEmployeeList()
         {
             try
             {
-                var array = _employee.GetAllEmployeesData();
-                var rowsCount = array.GetLength(0);
-                var columnCount = array.GetLength(1);
+                var allEmployeesData = _employee.GetAllEmployeesData();
+                var rowsCount = allEmployeesData.GetLength(0);
+                var columnCount = allEmployeesData.GetLength(1);
                 this._numberOfEmployees = rowsCount;
 
                 for (int i = 0; i < rowsCount; i++)
@@ -41,13 +39,14 @@ namespace DataCollector
                         if (j == 0)
                             this.dataGridView1.Rows.Add();
 
-                        this.dataGridView1.Rows[i].Cells[j].Value = array.GetValue(i, j);
+                        this.dataGridView1.Rows[i].Cells[j].Value = allEmployeesData.GetValue(i, j);
                     }
                 }
             }
             catch (Exception ex)
             {
                 var exceptions = this._employee.Exceptions;
+
                 foreach(string exception in exceptions)
                 {
                     MessageBox.Show(this, exception, ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);

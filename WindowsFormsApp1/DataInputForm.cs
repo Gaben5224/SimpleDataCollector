@@ -15,15 +15,17 @@ namespace DataCollector
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var Collect = new Collect();
-            Collect.EmployeeName = this.comboBox1.SelectedItem.ToString();
-            Collect.WorkType = this.comboBox2.SelectedItem.ToString();
-            Collect.StartNumber = this.textBox1.Text;
-            Collect.EndNumber = this.textBox2.Text;
-            Collect.TotalValue = this.textBox3.Text;
-            Collect.StartTime = this.maskedTextBox1.Text;
-            Collect.EndTime = this.maskedTextBox2.Text;
-            Collect.Comment = this.textBox4.Text;
+            var Collect = new Collect
+            {
+                EmployeeName = this.comboBox1.SelectedItem.ToString(),
+                WorkType = this.comboBox2.SelectedItem.ToString(),
+                StartNumber = this.textBox1.Text,
+                EndNumber = this.textBox2.Text,
+                TotalValue = this.textBox3.Text,
+                StartTime = this.maskedTextBox1.Text,
+                EndTime = this.maskedTextBox2.Text,
+                Comment = this.textBox4.Text
+            };
 
             try
             {
@@ -63,9 +65,9 @@ namespace DataCollector
 
             this.comboBox1.Items.Add("");
 
-            foreach (var name in employeeNames)
+            foreach (var employeename in employeeNames)
             {
-                this.comboBox1.Items.Add(name);
+                this.comboBox1.Items.Add(employeename);
             }
 
             this.comboBox1.SelectedIndex = 0;
