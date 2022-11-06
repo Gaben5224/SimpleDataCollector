@@ -7,7 +7,6 @@ namespace DataCollector
     public partial class DataInputForm : Form
     {
         private Employee _employee = new Employee();
-        private bool _isLoggedIn = Properties.Settings.Default.userIsLogged;
         public DataInputForm()
         {
             InitializeComponent();

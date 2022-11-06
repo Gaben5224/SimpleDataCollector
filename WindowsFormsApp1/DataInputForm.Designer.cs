@@ -91,15 +91,14 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "",
-            "Wire Wrap (előre blankolt)",
-            "39-es, 50-es receptacle",
-            "75-ös, 100-as receptacle",
-            "Twisted Pair kötés",
-            "Interface forrasztás",
-            "Personality Pin beütés",
-            "Receptacle beütés",
-            "Derlin stop berakás",
-            "Pushfinger berakás"});
+            "Munkafolyamat 1",
+            "Munkafolyamat 2",
+            "Munkafolyamat 3",
+            "Munkafolyamat 4",
+            "Munkafolyamat 5",
+            "Munkafolyamat 6",
+            "Munkafolyamat 7",
+            "Munkafolyamat 8"});
             this.comboBox2.Location = new System.Drawing.Point(232, 113);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(188, 26);
