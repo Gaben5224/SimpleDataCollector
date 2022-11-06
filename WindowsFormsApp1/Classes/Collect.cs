@@ -111,7 +111,7 @@ namespace DataCollector
 
         private void WriteToCsv()
         {
-            var csvPath = @"C:\Users\kovac\OneDrive\Dokumentumok\Adatok.csv";
+            var csvPath = "colectedData.csv";
             var content = String.Format("{0}; {1}; {2}; {3}; {4}; {5}; {6}; {7}; {8}" + Environment.NewLine, DateTime.Now.ToShortDateString(), this.EmployeeName, this.WorkType, this._startNumber, this._endNumber, this._totalValue, this._startTime, this._endTime, this._comment);
 
             if (!File.Exists(csvPath))
