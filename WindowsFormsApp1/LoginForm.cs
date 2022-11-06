@@ -23,7 +23,7 @@ namespace DataCollector
 
             try
             {
-                user.LoginForm(this.textBox1.Text);
+                user.Login(this.textBox1.Text);
                 this.Close();
             }
             catch (Exception exception)

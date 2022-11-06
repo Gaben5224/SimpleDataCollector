@@ -80,9 +80,7 @@ namespace DataCollector
 
         private void SetMenuStripItems()
         {
-            var user = new User();
-
-            if (user.IsUserLogged)
+            if (Properties.Settings.Default.userIsLogged)
             {
                 this.LoginFormToolStripMenuItem.Enabled = false;
                 this.EmployeeToolStripMenuItem.Enabled = true;
