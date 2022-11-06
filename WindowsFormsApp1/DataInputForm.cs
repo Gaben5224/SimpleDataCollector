@@ -46,8 +46,6 @@ namespace DataCollector
         {
             var LoginFormform = new LoginFormForm();
             LoginFormform.ShowDialog();
-
-            this.label10.Text = Properties.Settings.Default.userIsLogged.ToString();
         }
 
         private void DataInputForm_Activated(object sender, EventArgs e)
@@ -97,6 +95,12 @@ namespace DataCollector
                 this.EmployeeToolStripMenuItem.Enabled = false;
                 this.JobToolStripMenuItem.Enabled = false;
             }
+        }
+
+        private void EmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var employeeForm = new EmployeeListForm();
+            employeeForm.ShowDialog();
         }
     }
 }

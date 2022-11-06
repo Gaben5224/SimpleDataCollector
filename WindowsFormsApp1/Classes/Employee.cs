@@ -102,8 +102,6 @@ namespace DataCollector
 
             for (var i = 0; firstArraySize > i; i++)
             {
-                this._employeesData[i, i] = names[i].InnerText;
-
                 for (var j = 0; j < secondArraySize; j++)
                 {
 

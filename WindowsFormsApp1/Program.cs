@@ -13,7 +13,7 @@ namespace DataCollector
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EmployeeListForm());
+            Application.Run(new DataInputForm());
 
         }
     }
