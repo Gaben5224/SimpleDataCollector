@@ -10,6 +10,6 @@ The aim of this project:
 - Getting to know Linq
 - Getting to know Ms-Sql
 
-What this application do?
-It is designed to collect data on workflows whose performance can be measured because there are defined standards.
+What does this application do?
+It was designed to collect data on workflows whose performance can be measured because there are defined standards.
 The data is collected in a .csv file so that reports can be easily generated in Excel. 
