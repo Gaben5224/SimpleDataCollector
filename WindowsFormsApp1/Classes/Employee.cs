@@ -127,6 +127,11 @@ namespace DataCollector
 
         }
 
+        public void GetEmployeeAllDataByIndex(int index)
+        {
+            // TODO Complete this function, to get all data of one employee
+        }
+
         public void EditEmployee(int nodeID, string newName, int newId, string newJobTitle)
         {
             this._xmlDocument.Load(_xmlFilePath);
