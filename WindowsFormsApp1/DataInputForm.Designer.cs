@@ -1,6 +1,6 @@
 ﻿namespace DataCollector
 {
-    partial class Form1
+    partial class DataInputForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataInputForm));
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,15 +47,13 @@
             this.label9 = new System.Windows.Forms.Label();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menüToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoginFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EmployeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.JobToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label10 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -203,11 +201,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(103, 39);
+            this.label7.Location = new System.Drawing.Point(120, 39);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(253, 26);
+            this.label7.Size = new System.Drawing.Size(196, 26);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Huzalozási és szerelési napló";
+            this.label7.Text = "Adatbeviteli formalap";
             // 
             // label8
             // 
@@ -251,16 +249,6 @@
             this.maskedTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::DataCollector.Properties.Resources.ect_hu;
-            this.pictureBox1.Location = new System.Drawing.Point(370, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 36);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 20;
-            this.pictureBox1.TabStop = false;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -274,7 +262,7 @@
             // menüToolStripMenuItem
             // 
             this.menüToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LoginToolStripMenuItem,
+            this.LoginFormToolStripMenuItem,
             this.EmployeeToolStripMenuItem,
             this.JobToolStripMenuItem,
             this.ExitToolStripMenuItem});
@@ -282,14 +270,14 @@
             this.menüToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menüToolStripMenuItem.Text = "Menü";
             // 
-            // LoginToolStripMenuItem
+            // LoginFormToolStripMenuItem
             // 
-            this.LoginToolStripMenuItem.Image = global::DataCollector.Properties.Resources.PasswordIcon;
-            this.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem";
-            this.LoginToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.L)));
-            this.LoginToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
-            this.LoginToolStripMenuItem.Text = "Bejelentkezés";
-            this.LoginToolStripMenuItem.Click += new System.EventHandler(this.LoginToolStripMenuItem_Click);
+            this.LoginFormToolStripMenuItem.Image = global::DataCollector.Properties.Resources.PasswordIcon;
+            this.LoginFormToolStripMenuItem.Name = "LoginFormToolStripMenuItem";
+            this.LoginFormToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.L)));
+            this.LoginFormToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
+            this.LoginFormToolStripMenuItem.Text = "Bejelentkezés";
+            this.LoginFormToolStripMenuItem.Click += new System.EventHandler(this.LoginFormToolStripMenuItem_Click);
             // 
             // EmployeeToolStripMenuItem
             // 
@@ -325,13 +313,12 @@
             this.label10.TabIndex = 22;
             this.label10.Text = "label10";
             // 
-            // Form1
+            // DataInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(452, 545);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.maskedTextBox2);
             this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.label8);
@@ -355,11 +342,10 @@
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "DataInputForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ECT adatgyűjtő";
-            this.Activated += new System.EventHandler(this.Form1_Activated);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Activated += new System.EventHandler(this.DataInputForm_Activated);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -387,10 +373,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menüToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem LoginToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem LoginFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EmployeeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem JobToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;

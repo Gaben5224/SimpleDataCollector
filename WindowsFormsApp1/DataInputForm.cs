@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace DataCollector
 {
-    public partial class Form1 : Form
+    public partial class DataInputForm : Form
     {
         private Employee _employee = new Employee();
         private bool _isLoggedIn = Properties.Settings.Default.userIsLogged;
-        public Form1()
+        public DataInputForm()
         {
             InitializeComponent();
             SetValues();
@@ -42,15 +42,15 @@ namespace DataCollector
 
         }
 
-        private void LoginToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LoginFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var Loginform = new Login();
-            Loginform.ShowDialog();
+            var LoginFormform = new LoginFormForm();
+            LoginFormform.ShowDialog();
 
             this.label10.Text = Properties.Settings.Default.userIsLogged.ToString();
         }
 
-        private void Form1_Activated(object sender, EventArgs e)
+        private void DataInputForm_Activated(object sender, EventArgs e)
         {
             this.SetMenuStripItems();
         }
@@ -87,13 +87,13 @@ namespace DataCollector
 
             if (user.IsUserLogged)
             {
-                this.LoginToolStripMenuItem.Enabled = false;
+                this.LoginFormToolStripMenuItem.Enabled = false;
                 this.EmployeeToolStripMenuItem.Enabled = true;
                 this.JobToolStripMenuItem.Enabled = true;
             }
             else
             {
-                this.LoginToolStripMenuItem.Enabled = true;
+                this.LoginFormToolStripMenuItem.Enabled = true;
                 this.EmployeeToolStripMenuItem.Enabled = false;
                 this.JobToolStripMenuItem.Enabled = false;
             }

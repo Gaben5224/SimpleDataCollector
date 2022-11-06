@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DataCollector
 {
-    public partial class Login : Form
+    public partial class LoginFormForm : Form
     {
-        public Login()
+        public LoginFormForm()
         {
             InitializeComponent();
         }
@@ -23,7 +23,7 @@ namespace DataCollector
 
             try
             {
-                user.Login(this.textBox1.Text);
+                user.LoginForm(this.textBox1.Text);
                 this.Close();
             }
             catch (Exception exception)
