@@ -20,7 +20,7 @@ namespace DataCollector
             }
         }
 
-        public void LoginForm(string password)
+        public void Login(string password)
         {
             if (password == "7GJJrbEd+)eXmD@B")
                 Properties.Settings.Default.userIsLogged = true;
