@@ -10,8 +10,10 @@ namespace DataCollector
     {
         private readonly string _xmlFilePath = "Employee.xml";
         private readonly XmlDocument _xmlDocument = new XmlDocument();
-        public int Id { get; set; }
-        public string Name { get; set; }
+        private int _id;
+        private string _name;
+        private int _nodeId;
+        private string _jobTitle;
         public List<string> Exceptions = new List<string>();
 
         private List<string> _employeesName = new List<string>();
@@ -31,6 +33,38 @@ namespace DataCollector
                 XmlElement employeesElement = this._xmlDocument.DocumentElement;
                 this._xmlDocument.InsertBefore(xmlDeclaration, employeesElement);
                 this._xmlDocument.Save(_xmlFilePath);
+            }
+        }
+
+        public int Id
+        {
+            get
+            {
+                return this._id;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return this._name;
+            }
+        }
+
+        public string JobTitle 
+        {
+            get
+            {
+                return this._jobTitle;
+            }
+        }
+
+        public int NodeID
+        {
+            get
+            {
+                return this._nodeId;
             }
         }
 
@@ -127,19 +161,36 @@ namespace DataCollector
 
         }
 
+        public void GetEmployeeDataByIndex(int index)
+        {
+            var allData = GetAllEmployeesData();
+
+            this._id = Convert.ToInt32(allData.GetValue(index, 1));
+            this._name = (string)allData.GetValue(index, 2);
+            this._nodeId = Convert.ToInt32(allData.GetValue(index, 0));
+            this._jobTitle = (string)allData.GetValue(index, 3);
+        }
+
         public void EditEmployee(int nodeID, string newName, int newId, string newJobTitle)
         {
-            this._xmlDocument.Load(_xmlFilePath);
+            try
+            {
+                this._xmlDocument.Load(_xmlFilePath);
 
-            XmlNode targetEmployeeName = this._xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Name", nodeID));
-            targetEmployeeName.InnerText = newName;
-            XmlNode targetEmployeeId = this._xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Id", nodeID));
-            targetEmployeeId.InnerText = newId.ToString();
-            XmlNode targetJobTitle = this._xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Job", nodeID));
-            targetJobTitle.InnerText = newJobTitle;
+                XmlNode targetEmployeeName = this._xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Name", nodeID));
+                targetEmployeeName.InnerText = newName;
+                XmlNode targetEmployeeId = this._xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Id", nodeID));
+                targetEmployeeId.InnerText = newId.ToString();
+                XmlNode targetJobTitle = this._xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Job", nodeID));
+                targetJobTitle.InnerText = newJobTitle;
 
-            this._xmlDocument.Save(_xmlFilePath);
-
+                this._xmlDocument.Save(_xmlFilePath);
+            }
+            catch (Exception)
+            {
+                this.Exceptions.Add("Hiba történt az xml fájl írásakor.");
+                throw new Exception("Hiba!");
+            }
         }
 
         public void DeleteEmployee(int nodeId)
