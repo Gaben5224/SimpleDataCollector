@@ -18,17 +18,8 @@ namespace DataCollector
         private bool _isNewEmployee;
         public EmployeeListForm()
         {
-            var names = _employee.GetAllEmployeesName();
             InitializeComponent();
-            this.panel3.Enabled = false;
-            this.panel3.Visible = false;
-            this.comboBox1.Items.Add("");
-
-            
-            foreach(var name in names)
-            {
-                this.comboBox1.Items.Add(name);
-            }
+            this.ResetForm();
         }
 
 
@@ -86,6 +77,8 @@ namespace DataCollector
                     _employee.EditEmployee(_employee.NodeID, comboBox1.Text, Convert.ToInt32(textBox2.Text), textBox3.Text);
 
                     MessageBox.Show("Sikeres mentés!", "OK");
+
+                    this.ResetForm();
                 }
                 catch (Exception ex)
                 {
@@ -94,7 +87,54 @@ namespace DataCollector
                     foreach(var exception in exceptions)
                     {
                         MessageBox.Show(this, exception, ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.ResetForm();
                     }
+
+                }
+            }
+            else
+            {
+                try
+                {
+                    _employee.AddEmployee(this.textBox2.Text, this.textBox3.Text, this.textBox1.Text);
+
+                    MessageBox.Show(this, "Dolgozó adatai sikeresen rögzítve!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    this.ResetForm();
+                }
+                catch (Exception ex)
+                {
+
+                    var exceptions = _employee.Exceptions;
+
+                    foreach (var exception in exceptions)
+                    {
+                        MessageBox.Show(this, exception, ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+            }
+        }
+
+        private void ResetForm()
+        {
+            var names = _employee.GetAllEmployeesName();
+
+            this.checkBox1.Checked = true;
+            this.panel3.Enabled = false;
+            this.panel3.Visible = false;
+            this.textBox1.ResetText();
+            this.textBox2.ResetText();
+            this.textBox3.ResetText();
+            this.comboBox1.ResetText();
+            
+            if(this.comboBox1.Items.Count == 0)
+            {
+                this.comboBox1.Items.Add("");
+
+                foreach (var name in names)
+                {
+                    this.comboBox1.Items.Add(name);
                 }
             }
         }
