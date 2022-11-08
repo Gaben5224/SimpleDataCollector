@@ -68,34 +68,58 @@ namespace DataCollector
             }
         }
 
-        public void AddEmployee(int id, string jobPosition, string name)
+        public void AddEmployee(string id, string jobPosition, string name)
         {
-            this._xmlDocument.Load(_xmlFilePath);
-            int childCount = this._xmlDocument.ChildNodes.Count;
-            var lastChildAttribute = this._xmlDocument.ChildNodes.Item(childCount - 1).LastChild.Attributes;
-            var lastNodeId = Convert.ToInt32(lastChildAttribute.Item(0).Value);
+            try
+            {
+                if (this.Exceptions.Any())
+                    CheckAndDeleteExceptions();
+
+                if (!int.TryParse(id, out int cardId))
+                    this.Exceptions.Add("Nem adtad meg a dolgozó kértyaszámát. Kérlek ellenőrizd!");
+
+                if (String.IsNullOrWhiteSpace(jobPosition))
+                    this.Exceptions.Add("Nem adtad meg a dolgozó munkakörét. Kérlek ellenőrizd!");
+
+                if (String.IsNullOrWhiteSpace(name))
+                    this.Exceptions.Add("Nem adtad meg a dolgozó nevét. Kérlek ellenőrizd!");
+
+                if (this.Exceptions.Any())
+                    throw new Exception("Hiba!");
+
+                this._xmlDocument.Load(_xmlFilePath);
+                int childCount = this._xmlDocument.ChildNodes.Count;
+                var lastChildAttribute = this._xmlDocument.ChildNodes.Item(childCount - 1).LastChild.Attributes;
+                var lastNodeId = Convert.ToInt32(lastChildAttribute.Item(0).Value);
 
 
-            XmlElement employeeElement = this._xmlDocument.CreateElement("Employee");
-            this._xmlDocument.DocumentElement.AppendChild(employeeElement);
+                XmlElement employeeElement = this._xmlDocument.CreateElement("Employee");
+                this._xmlDocument.DocumentElement.AppendChild(employeeElement);
 
-            XmlAttribute attribute = this._xmlDocument.CreateAttribute("NodeId");
-            attribute.Value = (lastNodeId + 1).ToString();
-            employeeElement.Attributes.Append(attribute);
+                XmlAttribute attribute = this._xmlDocument.CreateAttribute("NodeId");
+                attribute.Value = (lastNodeId + 1).ToString();
+                employeeElement.Attributes.Append(attribute);
 
-            XmlElement idElement = this._xmlDocument.CreateElement("Id");
-            idElement.InnerText = id.ToString();
-            employeeElement.AppendChild(idElement);
+                XmlElement idElement = this._xmlDocument.CreateElement("Id");
+                idElement.InnerText = cardId.ToString();
+                employeeElement.AppendChild(idElement);
 
-            XmlElement nameElement = this._xmlDocument.CreateElement("Name");
-            nameElement.InnerText = name;
-            employeeElement.AppendChild(nameElement);
+                XmlElement nameElement = this._xmlDocument.CreateElement("Name");
+                nameElement.InnerText = name;
+                employeeElement.AppendChild(nameElement);
 
-            XmlElement jobElement = this._xmlDocument.CreateElement("Job");
-            jobElement.InnerText = jobPosition;
-            employeeElement.AppendChild(jobElement);
+                XmlElement jobElement = this._xmlDocument.CreateElement("Job");
+                jobElement.InnerText = jobPosition;
+                employeeElement.AppendChild(jobElement);
 
-            this._xmlDocument.Save(_xmlFilePath);
+                this._xmlDocument.Save(_xmlFilePath);
+            }
+            catch (Exception)
+            {
+
+                this.Exceptions.Add("Hiba történt a dolgozó felvételekor.");
+                throw new Exception("Hiba!");
+            }
         }
 
         public List<string> GetAllEmployeesName()
@@ -210,6 +234,13 @@ namespace DataCollector
             }
 
             this._xmlDocument.Save(_xmlFilePath);
+        }
+
+        private void CheckAndDeleteExceptions()
+        {
+            var exceptionCount = this.Exceptions.Count();
+
+            this.Exceptions.RemoveRange(0, exceptionCount);
         }
     }
 }
