@@ -14,10 +14,10 @@ namespace DataCollector
         private string _name;
         private int _nodeId;
         private string _jobTitle;
-        public List<string> Exceptions = new List<string>();
-
         private List<string> _employeesName = new List<string>();
         private string[,] _employeesData;
+        public List<string> Exceptions = new List<string>();
+
 
         public Employee()
         {
@@ -26,11 +26,9 @@ namespace DataCollector
                 File.Create(_xmlFilePath).Close();
 
 
-                this._xmlDocument.LoadXml("<Employees>" +
-                                    "</Employees>");
-                XmlDeclaration xmlDeclaration;
-                xmlDeclaration = this._xmlDocument.CreateXmlDeclaration("1.0", "UTF-8", "no");
-                XmlElement employeesElement = this._xmlDocument.DocumentElement;
+                this._xmlDocument.LoadXml("<Employees></Employees>");
+                var xmlDeclaration = this._xmlDocument.CreateXmlDeclaration("1.0", "UTF-8", "no");
+                var employeesElement = this._xmlDocument.DocumentElement;
                 this._xmlDocument.InsertBefore(xmlDeclaration, employeesElement);
                 this._xmlDocument.Save(_xmlFilePath);
             }
@@ -73,7 +71,7 @@ namespace DataCollector
             try
             {
                 if (this.Exceptions.Any())
-                    CheckAndDeleteExceptions();
+                    RemoveExceptions();
 
                 if (!int.TryParse(id, out int cardId))
                     this.Exceptions.Add("Nem adtad meg a dolgozó kértyaszámát. Kérlek ellenőrizd!");
@@ -93,22 +91,22 @@ namespace DataCollector
                 var lastNodeId = Convert.ToInt32(lastChildAttribute.Item(0).Value);
 
 
-                XmlElement employeeElement = this._xmlDocument.CreateElement("Employee");
+                var employeeElement = this._xmlDocument.CreateElement("Employee");
                 this._xmlDocument.DocumentElement.AppendChild(employeeElement);
 
-                XmlAttribute attribute = this._xmlDocument.CreateAttribute("NodeId");
+                var attribute = this._xmlDocument.CreateAttribute("NodeId");
                 attribute.Value = (lastNodeId + 1).ToString();
                 employeeElement.Attributes.Append(attribute);
 
-                XmlElement idElement = this._xmlDocument.CreateElement("Id");
+                var idElement = this._xmlDocument.CreateElement("Id");
                 idElement.InnerText = cardId.ToString();
                 employeeElement.AppendChild(idElement);
 
-                XmlElement nameElement = this._xmlDocument.CreateElement("Name");
+                var nameElement = this._xmlDocument.CreateElement("Name");
                 nameElement.InnerText = name;
                 employeeElement.AppendChild(nameElement);
 
-                XmlElement jobElement = this._xmlDocument.CreateElement("Job");
+                var jobElement = this._xmlDocument.CreateElement("Job");
                 jobElement.InnerText = jobPosition;
                 employeeElement.AppendChild(jobElement);
 
@@ -201,11 +199,11 @@ namespace DataCollector
             {
                 this._xmlDocument.Load(_xmlFilePath);
 
-                XmlNode targetEmployeeName = this._xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Name", nodeID));
+                var targetEmployeeName = this._xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Name", nodeID));
                 targetEmployeeName.InnerText = newName;
-                XmlNode targetEmployeeId = this._xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Id", nodeID));
+                var targetEmployeeId = this._xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Id", nodeID));
                 targetEmployeeId.InnerText = newId.ToString();
-                XmlNode targetJobTitle = this._xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Job", nodeID));
+                var targetJobTitle = this._xmlDocument.SelectSingleNode(string.Format("Employees/Employee[@NodeId='{0}']/Job", nodeID));
                 targetJobTitle.InnerText = newJobTitle;
 
                 this._xmlDocument.Save(_xmlFilePath);
@@ -236,7 +234,7 @@ namespace DataCollector
             this._xmlDocument.Save(_xmlFilePath);
         }
 
-        private void CheckAndDeleteExceptions()
+        private void RemoveExceptions()
         {
             var exceptionCount = this.Exceptions.Count();
 
